@@ -1,0 +1,74 @@
+{% extends "base.html" %} {% block title %}Smart Music Search{% endblock %} {% block content
+%}
+ 
+<style>
+ p1 {
+
+  padding-top: 500px;
+  padding-bottom: 500px;
+  
+ }
+
+</style>
+
+<h1 align="center">Smart Music Search</h1>
+<form class="form-inline my-2 my-lg-0" method="GET">
+  <input align="center" class="form-control mr-sm-2" type="search" placeholder="Search" name="song">
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+
+<body>
+  <div style="width: 100%; display: table;">
+      <div style="display: table-row; height: 100px;">
+          <div style="width: 33%; display: table-cell;">
+              <h3>Results by Artist</h3>
+              {% for qs in artists %}
+                <p><em>Title:</em> {{qs.name}}</p>
+                <p><em>Artist:</em> <mark>{{qs.artist}}</mark></p>
+                <p><em>Album:</em> {{qs.album}}</p>
+
+                <form action="/" METHOD="POST">
+                  <button name="reaction" type="submit" class="btn btn-outline-primary" value = "like{{qs.id}}" >Like</button>
+                  <button name="reaction" type="submit" class="btn btn-outline-danger" value = "dislike{{qs.id}}">Dislike</button>
+                </form>
+
+                <br>
+      
+              {% endfor %}
+
+          </div>
+          <div style="display: table-cell;"> 
+              <h3>Results by Song Name</h3>
+              {% for qs in songs %}
+                <p><em>Title:</em><mark> {{qs.name}}</mark></p>
+                <p><em>Artist:</em> {{qs.artist}}  </p>
+                <p><em>Album:</em> {{qs.album}}</p>
+
+                <form action="/" METHOD="POST">
+                  <button name="reaction" type="submit" class="btn btn-outline-primary"  value = "like{{qs.id}}">Like</button>
+                  <button name="reaction" type="submit" class="btn btn-outline-danger" value = "dislike{{qs.id}}">Dislike</button>
+                </form>
+
+                <br>
+              {% endfor %}
+          </div>
+          <div style="display: table-cell;"> 
+            <h3>Results by Album Name</h3>
+
+            {% for qs in albums %}
+              <p><em>Title:</em> {{qs.name}}</p>
+              <p><em>Artist:</em> {{qs.artist}}</p>
+              <p><em>Album:</em> <mark>{{qs.album}}</mark></p>
+
+              <form action="/" METHOD="POST">
+                <button name="reaction" type="submit" class="btn btn-outline-primary" value = "like{{qs.id}}">Like</button>
+                <button name="reaction" type="submit" class="btn btn-outline-danger" value = "dislike{{qs.id}}">Dislike</button>
+              </form>
+              <br>
+            {% endfor %}
+
+        </div>
+      </div>
+  </div>
+</body>
+{% endblock %}

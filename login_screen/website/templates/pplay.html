@@ -1,0 +1,43 @@
+{% extends "base.html" %} {% block title %}Add{% endblock %} {% block content
+    %}
+    <style>
+
+      p {
+        padding-right: 1500px;
+        }
+
+
+      p1 {
+        padding-right: 1500px;
+        padding-bottom: 25px;
+
+        }
+      
+
+      </style>
+
+    <h1 align="center">Add Personal Playlist</h1>
+    <form class="form-inline my-2 my-lg-0" method="GET">
+    <p><h3>
+        Search by Personal Playlist
+      </h3></p>
+    <p><input align="center" class="form-control mr-sm-2" type="search" placeholder="Spotify User Name" name="user_name"></p>
+  <p><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button></p>
+    </form>
+    <p1>
+    <p>
+    {% for qs in tester %}
+    </p>
+        <em>Playlist:</em> <strong>{{qs}}</strong>
+
+
+    <form METHOD="POST">
+        <button name="addPlaylist" type="submit" class="btn btn-outline-primary" value = "{{qs}}" >Add Playlist</button>
+      </form>
+    <form METHOD="POST">
+        <button name="likePlaylist" type="submit" class="btn btn-outline-primary" value = "{{qs}}" >Like Playlist</button>
+      </form>
+
+    {% endfor %}
+    </p1>
+{% endblock %}

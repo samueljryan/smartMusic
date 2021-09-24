@@ -1,0 +1,38 @@
+{% extends "base.html" %} {% block title %}Recommendations{% endblock %} {% block content
+    %}
+    <h1 align="center">Recommened</h1>
+<!-- 
+     <form action="/" METHOD="POST"></form>
+      <button  align="center" class="btn btn-outline-success my-2 my-sm-0" type="submit">Reccomend Me!</button>
+    </form>
+--> 
+<style>
+  p {
+    padding-top: 15px;
+  }
+
+  p1 {
+    padding-right:200%;
+    white-space: nowrap;
+    display: inline-block;
+
+  }
+  </style>
+
+<div> 
+            <h3>Songs to Check out!</h3>
+
+              {% for qs in songs %}
+                <p>
+                <p1> <em>Title:</em> <mark>{{qs.name}}</mark></p1>
+                <p1> <em>Artist:</em> {{qs.artist}}</p1>
+                <p1> <em>Album:</em> {{qs.album}}</p1>
+                      
+                <form METHOD="POST">
+                  <button name="rereaction" type="submit" class="btn btn-outline-primary" value = "like{{qs.id}}" >Like</button>
+                  <button name="rereaction" type="submit" class="btn btn-outline-danger" value = "dislike{{qs.id}}">Dislike</button>
+                </form>
+              </p>
+              {% endfor %}
+</div>>
+    {% endblock %}

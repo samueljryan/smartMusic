@@ -1,0 +1,61 @@
+{% extends "base.html" %} {% block title %}Updated Likeability{% endblock %} {% block content
+%}
+<h1 align="center">Smart Music Search</h1>
+<form class="form-inline my-2 my-lg-0" method="GET">
+    <input align="center" class="form-control mr-sm-2" type="search" placeholder="Search" name="song">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+<table>
+    <thead>
+        <tr>
+            <th>Results by Artist</th>
+            <th>Results by Song Name</th>
+            <th>Results by Album Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                ________________________________________________________________
+                {% for qs in artists %}
+                <li>
+                    <p><em>Title:</em> {{qs.name}}</p>
+                    <p><em>Artist:</em> <mark>{{qs.artist}}</mark>
+                        <button type="button" class="btn btn-outline-primary">Like</button>
+                        <button type="button" class="btn btn-outline-danger">Dislike</button>
+                    </p>
+                    <p><em>Album:</em> {{qs.album}}</p>
+                </li>
+                {% endfor %}
+            </td>
+            <td>
+                ________________________________________________________________
+                {% for qs in songs %}
+                <li>
+                    <p><em>Title:</em><mark> {{qs.name}}</mark></p>
+                    <p><em>Artist:</em> {{qs.artist}}
+                        <button type="button" class="btn btn-outline-primary">Like</button>
+                        <button type="button" class="btn btn-outline-danger">Dislike</button>
+                    </p>
+
+                    <p><em>Album:</em> {{qs.album}}</p>
+                </li>
+                {% endfor %}
+            </td>
+            <td>
+                ________________________________________________________________
+                {% for qs in albums %}
+                <li>
+                    <p><em>Title:</em> {{qs.name}}</p>
+                    <p><em>Artist:</em> {{qs.artist}}
+                        <button type="button" class="btn btn-outline-primary">Like</button>
+                        <button type="button" class="btn btn-outline-danger">Dislike</button>
+                    </p>
+                    <p><em>Album:</em> <mark>{{qs.album}}</mark></p>
+                </li>
+                {% endfor %}
+            </td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %} {% block title %}Add{% endblock %} {% block content
+    %}
+
+    <h1 align="center">Your Liked and Disliked Songs</h1>
+    <body>
+      <div style="width: 100%;">
+          <div style="width: 50%; float: left;background-color: rgba(0, 128, 0, 0.05);"> 
+            <h1 align="center">Liked Songs</h1>
+
+
+              {% for qs in liked %}
+   
+              <p><em>Title:</em> <strong>{{qs.name}}</strong></p>
+              <p><em>Artist:</em> <strong>{{qs.artist}}</strong></p>
+              <p><em>Album:</em> <strong>{{qs.album}}</strong></p>
+        
+            <form METHOD="POST">
+                <button name="dislike" type="submit" class="btn btn-outline-primary" value = "{{qs.id}}" >Dislike</button>
+              </form>
+            <form METHOD="POST">
+                <button name="delete" type="submit" class="btn btn-outline-primary" value = "{{qs.id}}" >Delete</button>
+              </form>
+        
+            {% endfor %}
+         
+          </div>
+          <div style="margin-left: 50%; background-color:  rgba(255, 0, 0, 0.05);"> 
+            <h1 align="center">Disliked Songs</h1>
+
+              {% for qs in disliked %}
+
+        <p><em>Title:</em> <strong>{{qs.name}}</strong></p>
+      <p><em>Artist:</em> <strong>{{qs.artist}}</strong></p>
+      <p><em>Album:</em> <strong>{{qs.album}}</strong></p>
+
+
+    <form METHOD="POST">
+        <button name="like" type="submit" class="btn btn-outline-primary" value = "{{qs.id}}" >Like</button>
+        </form>
+    <form METHOD="POST">
+        <button name="delete" type="submit" class="btn btn-outline-primary" value = "{{qs.id}}" >Delete</button>
+        </form>
+
+    {% endfor %}
+          </div>
+      </div>
+   </body>
+   
+
+    
+
+{% endblock %}
