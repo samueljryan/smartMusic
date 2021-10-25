@@ -27,7 +27,6 @@ def create_app():
     app.register_blueprint(pplay, url_prefix='/pplay')
     app.register_blueprint(liked, url_prefix='/liked')
 
-
     from .models import User, Playlist, Songs
 
     create_database(app)
