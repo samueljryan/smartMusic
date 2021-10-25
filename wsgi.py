@@ -1,3 +1,3 @@
-from login_screen import create_app
+from login_screen.website import create_app
 
 app = create_app()
